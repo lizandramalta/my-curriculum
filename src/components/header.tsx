@@ -3,7 +3,7 @@ import { Menu } from '.'
 import logo from '../assets/logo.png'
 import logoMobile from '../assets/mobile_logo.png'
 import { MenuIcon } from '../application/theme/icons'
-import { MouseEventHandler, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { MenuItem } from './menu'
 
 interface HeaderProps {
@@ -30,7 +30,9 @@ export default function Header({ menuItens }: HeaderProps) {
       <figure className="logo">
         <img src={isMobile ? logoMobile : logo} alt="Lizandra Malta" />
       </figure>
-      {((isMobile && showMenu) || !isMobile) && <Menu menuItens={menuItens} />}
+      {((isMobile && showMenu) || !isMobile) && (
+        <Menu menuItens={menuItens} changeMenuVisibility={setShowMenu} />
+      )}
       <button className="menuButton" onClick={() => setShowMenu(!showMenu)}>
         <MenuIcon size={32} />
       </button>

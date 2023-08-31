@@ -8,13 +8,28 @@ export type MenuItem = {
 
 interface MenuProps {
   menuItens: MenuItem[]
+  changeMenuVisibility: (visibility: boolean) => void
 }
 
-export default function Menu({ menuItens }: MenuProps) {
+export default function Menu({ menuItens, changeMenuVisibility }: MenuProps) {
+  function handleMenuItemClick(
+    action: MouseEventHandler<HTMLSpanElement> | undefined
+  ) {
+    if (action) {
+      const fakeEvent = {
+        currentTarget: null,
+      } as unknown as React.MouseEvent<HTMLSpanElement>
+      action(fakeEvent)
+    }
+    changeMenuVisibility(false)
+  }
+
   return (
     <S.Menu>
       {menuItens.map((item) => (
-        <span onClick={item.action}>{item.label}</span>
+        <span onClick={() => handleMenuItemClick(item.action)}>
+          {item.label}
+        </span>
       ))}
     </S.Menu>
   )
