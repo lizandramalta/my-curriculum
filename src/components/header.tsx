@@ -3,15 +3,15 @@ import { Menu } from '.'
 import logo from '../assets/logo.png'
 import logoMobile from '../assets/mobile_logo.png'
 import { MenuIcon } from '../application/theme/icons'
-import { useEffect, useState } from 'react'
+import { MouseEventHandler, useEffect, useState } from 'react'
 import { MenuItem } from './menu'
 
 interface HeaderProps {
   menuItens: MenuItem[]
-  // onClickLogo: MouseEventHandler<HTMLSpanElement>
+  onClickLogo: MouseEventHandler<HTMLSpanElement>
 }
 
-export default function Header({ menuItens }: HeaderProps) {
+export default function Header({ menuItens, onClickLogo }: HeaderProps) {
   const [isMobile, setIsMobile] = useState(false)
   const [showMenu, setShowMenu] = useState(false)
 
@@ -27,7 +27,7 @@ export default function Header({ menuItens }: HeaderProps) {
 
   return (
     <S.Header>
-      <figure className="logo">
+      <figure className="logo" onClick={onClickLogo}>
         <img src={isMobile ? logoMobile : logo} alt="Lizandra Malta" />
       </figure>
       {((isMobile && showMenu) || !isMobile) && (

@@ -37,6 +37,7 @@ import { MenuItem } from './components/menu'
 function App() {
   const [isMobile, setIsMobile] = useState(false)
   const [isTablet, setIsTablet] = useState(false)
+  const informationRef = useRef<HTMLDivElement>(null)
   const experieceRef = useRef<HTMLDivElement>(null)
   const habilitiesRef = useRef<HTMLDivElement>(null)
   const educationRef = useRef<HTMLDivElement>(null)
@@ -71,8 +72,11 @@ function App() {
 
   return (
     <S.Container>
-      <Header menuItens={menuItens} />
-      <S.InformationSection>
+      <Header
+        menuItens={menuItens}
+        onClickLogo={() => scrollToSection(informationRef)}
+      />
+      <S.InformationSection ref={informationRef}>
         <div className="text-container">
           <h2 className="salution">{SALUTION}</h2>
           <h1 className="bold role">{ROLE}</h1>

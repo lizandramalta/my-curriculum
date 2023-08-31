@@ -1,9 +1,8 @@
-import { MouseEventHandler } from 'react'
 import * as S from '../styles'
 
 export type MenuItem = {
   label: string
-  action: MouseEventHandler<HTMLSpanElement> | undefined
+  action: () => void
 }
 
 interface MenuProps {
@@ -12,15 +11,8 @@ interface MenuProps {
 }
 
 export default function Menu({ menuItens, changeMenuVisibility }: MenuProps) {
-  function handleMenuItemClick(
-    action: MouseEventHandler<HTMLSpanElement> | undefined
-  ) {
-    if (action) {
-      const fakeEvent = {
-        currentTarget: null,
-      } as unknown as React.MouseEvent<HTMLSpanElement>
-      action(fakeEvent)
-    }
+  function handleMenuItemClick(action: () => void) {
+    action()
     changeMenuVisibility(false)
   }
 
