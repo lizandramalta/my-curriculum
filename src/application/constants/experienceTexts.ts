@@ -1,4 +1,4 @@
-export const SECTION_TITLE = 'Experiência Profissional'
+export const EXPERIENCE_TITLE = 'Experiência Profissional'
 export const WORD_PERIOD = 'Fev 2022 - Atual'
 export const RESPONSABILITY = 'Desenvolvedora Mobile'
 export const COMPANY = 'DITEC | Banco Do Brasil'

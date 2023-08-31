@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const ExperienceSection = styled.section`
+export const EducationSection = styled.section`
   display: flex;
   padding: 56px 162px;
   flex-direction: column;
@@ -9,17 +9,10 @@ export const ExperienceSection = styled.section`
   background-color: ${(props) => props.theme.colors.green.dark};
   color: ${(props) => props.theme.colors.white.default};
 
-  .section-description-container,
-  .contribution-list {
+  .section-description-container {
     display: flex;
     flex-direction: column;
     gap: 8px;
-  }
-
-  .contribution-list {
-    margin-top: 8px;
-    margin-left: 32px;
-    font-size: ${(props) => props.theme.typography.fontScale.p};
   }
 
   @media (max-width: ${(props) => props.theme.breakpoint.tablet}) {
@@ -28,7 +21,6 @@ export const ExperienceSection = styled.section`
 
   @media (max-width: ${(props) => props.theme.breakpoint.mobile}) {
     padding: 32px 16px;
-    flex-direction: column;
 
     .section-title {
       font-size: ${(props) => props.theme.typography.fontScale.h2};

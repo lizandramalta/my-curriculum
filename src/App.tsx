@@ -16,9 +16,22 @@ import {
   CONTRIBUTION_THREE,
   CONTRIBUTION_TWO,
   RESPONSABILITY,
-  SECTION_TITLE,
+  EXPERIENCE_TITLE,
   WORD_PERIOD,
 } from './application/constants/experienceTexts'
+import {
+  hardSkills,
+  languageSkills,
+  softSkills,
+} from './application/data/skills'
+import { SkillCard } from './components'
+import {
+  COURSE,
+  EDUCATION_TITLE,
+  UNIVERSITY,
+} from './application/constants/educationTexts'
+import { HABILITIES_TITLE } from './application/constants/habilitiesTexts'
+import { LANGUAGE_TITLE } from './application/constants/languageTexts'
 
 function App() {
   const [isMobile, setIsMobile] = useState(false)
@@ -57,7 +70,7 @@ function App() {
       </S.InformationSection>
       <S.ExperienceSection>
         <div className="section-title-container">
-          <h1 className="bold section-title">{SECTION_TITLE}</h1>
+          <h1 className="bold section-title">{EXPERIENCE_TITLE}</h1>
         </div>
         <div className="section-description-container">
           <h5>{WORD_PERIOD}</h5>
@@ -70,6 +83,36 @@ function App() {
           </ul>
         </div>
       </S.ExperienceSection>
+      <S.SkillSection>
+        <h1 className="bold">{HABILITIES_TITLE}</h1>
+        <div className="skill-container">
+          {softSkills.map((skill) => (
+            <SkillCard skillName={skill.name} />
+          ))}
+        </div>
+        <div className="skill-container">
+          {hardSkills.map((skill) => (
+            <SkillCard skillName={skill.name} skillLevel={skill.level} />
+          ))}
+        </div>
+      </S.SkillSection>
+      <S.EducationSection>
+        <div className="section-title-container">
+          <h1 className="bold section-title">{EDUCATION_TITLE}</h1>
+        </div>
+        <div className="section-description-container">
+          <h5 className="bold">{COURSE}</h5>
+          <h5>{UNIVERSITY}</h5>
+        </div>
+      </S.EducationSection>
+      <S.LanguageSection>
+        <h1 className="bold">{LANGUAGE_TITLE}</h1>
+        <div className="language-container">
+          {languageSkills.map((skill) => (
+            <SkillCard skillName={skill.name} skillLevel={skill.level} />
+          ))}
+        </div>
+      </S.LanguageSection>
     </S.Container>
   )
 }

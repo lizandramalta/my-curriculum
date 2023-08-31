@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
+  color: ${(props) => props.theme.colors.black.default};
+
   h1 {
     font-size: ${(props) => props.theme.typography.fontScale.h1};
     font-weight: ${(props) => props.theme.typography.fontWeight.regular};
