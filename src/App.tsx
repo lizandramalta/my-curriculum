@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import {
   PRESENTATION_FIRST_PARAGRAPH,
   PRESENTATION_SECOND_PARAGRAPH,
@@ -32,10 +32,15 @@ import {
 } from './application/constants/educationTexts'
 import { HABILITIES_TITLE } from './application/constants/habilitiesTexts'
 import { LANGUAGE_TITLE } from './application/constants/languageTexts'
+import { MenuItem } from './components/menu'
 
 function App() {
   const [isMobile, setIsMobile] = useState(false)
   const [isTablet, setIsTablet] = useState(false)
+  const experieceRef = useRef<HTMLDivElement>(null)
+  const habilitiesRef = useRef<HTMLDivElement>(null)
+  const educationRef = useRef<HTMLDivElement>(null)
+  const languageRef = useRef<HTMLDivElement>(null)
 
   const handleResize = () => {
     setIsTablet(window.innerWidth <= 992 && window.innerWidth > 770)
@@ -48,6 +53,16 @@ function App() {
     return () => window.removeEventListener('resize', handleResize)
   }, [])
 
+  const scrollToSection = (sectionRef: React.RefObject<HTMLDivElement>) =>
+    sectionRef.current?.scrollIntoView({ behavior: 'smooth' })
+
+  const menuItens: MenuItem[] = [
+    { label: 'Experiência', action: () => scrollToSection(experieceRef) },
+    { label: 'Habilidades', action: () => scrollToSection(habilitiesRef) },
+    { label: 'Educação', action: () => scrollToSection(educationRef) },
+    { label: 'Idiomas', action: () => scrollToSection(languageRef) },
+  ]
+
   function getPersonalPhoto() {
     if (isMobile) return PersonalPhotoMobile
     if (isTablet) return PersonalPhotoTablet
@@ -56,7 +71,7 @@ function App() {
 
   return (
     <S.Container>
-      <Header />
+      <Header menuItens={menuItens} />
       <S.InformationSection>
         <div className="text-container">
           <h2 className="salution">{SALUTION}</h2>
@@ -68,7 +83,7 @@ function App() {
           <img src={getPersonalPhoto()} />
         </figure>
       </S.InformationSection>
-      <S.ExperienceSection>
+      <S.ExperienceSection ref={experieceRef}>
         <div className="section-title-container">
           <h1 className="bold section-title">{EXPERIENCE_TITLE}</h1>
         </div>
@@ -83,7 +98,7 @@ function App() {
           </ul>
         </div>
       </S.ExperienceSection>
-      <S.SkillSection>
+      <S.SkillSection ref={habilitiesRef}>
         <h1 className="bold">{HABILITIES_TITLE}</h1>
         <div className="skill-container">
           {softSkills.map((skill) => (
@@ -96,7 +111,7 @@ function App() {
           ))}
         </div>
       </S.SkillSection>
-      <S.EducationSection>
+      <S.EducationSection ref={educationRef}>
         <div className="section-title-container">
           <h1 className="bold section-title">{EDUCATION_TITLE}</h1>
         </div>
@@ -105,7 +120,7 @@ function App() {
           <h5>{UNIVERSITY}</h5>
         </div>
       </S.EducationSection>
-      <S.LanguageSection>
+      <S.LanguageSection ref={languageRef}>
         <h1 className="bold">{LANGUAGE_TITLE}</h1>
         <div className="language-container">
           {languageSkills.map((skill) => (
