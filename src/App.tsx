@@ -33,6 +33,7 @@ import {
 import { HABILITIES_TITLE } from './application/constants/habilitiesTexts'
 import { LANGUAGE_TITLE } from './application/constants/languageTexts'
 import { MenuItem } from './components/menu'
+import Contact from './components/contact'
 
 function App() {
   const [isMobile, setIsMobile] = useState(false)
@@ -132,6 +133,7 @@ function App() {
           ))}
         </div>
       </S.LanguageSection>
+      <Contact />
     </S.Container>
   )
 }
