@@ -13,7 +13,7 @@ export default function SkillCard({ skillName, skillLevel }: SkillCardProps) {
       case 'intermediary':
         return 'Intermediário'
       case 'advanced':
-        return 'Avançando'
+        return 'Avançado'
       default:
         return 'Valor inválido'
     }
