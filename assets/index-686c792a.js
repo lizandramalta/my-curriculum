@@ -127,7 +127,7 @@ Ao longo desses projetos, dominei tecnologias front-end como HTML, CSS e JavaScr
 `,Om=xe.button`
   cursor: pointer;
   position: fixed;
-  bottom: 56px;
+  bottom: 32px;
   right: 40px;
   border: 0;
   background-color: ${e=>e.theme.colors.black.dark};
