@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const ContactButton = styled.button`
   cursor: pointer;
   position: fixed;
-  bottom: 56px;
+  bottom: 32px;
   right: 40px;
   border: 0;
   background-color: ${(props) => props.theme.colors.black.dark};
